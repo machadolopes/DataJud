@@ -1,0 +1,17 @@
+{
+  "name": "DataJud",
+  "install": "sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends python3-venv && python3 -m venv .venv && . .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt && python -m ipykernel install --user --name datajud --display-name \"DataJud (.venv)\"",
+  "terminals": [
+    {
+      "name": "jupyterlab",
+      "command": ". .venv/bin/activate && jupyter lab --no-browser --ip=0.0.0.0 --port=8888 --ServerApp.token='' --ServerApp.password='' --ServerApp.root_dir=.",
+      "description": "JupyterLab server for editing and running DATAJUD_API_v_final.ipynb. Open http://localhost:8888/lab."
+    }
+  ],
+  "ports": [
+    {
+      "name": "jupyterlab",
+      "port": 8888
+    }
+  ]
+}

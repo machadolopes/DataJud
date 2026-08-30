@@ -1,0 +1,13 @@
+# Core dependencies for the DataJud extraction and analysis notebook
+# (DATAJUD_API_v_final.ipynb).
+requests>=2.32,<3
+pandas>=2.2,<3
+pyarrow>=16,<21
+matplotlib>=3.8,<4
+numpy>=1.26,<3
+
+# Jupyter tooling to run and edit the notebook locally.
+jupyterlab>=4.2,<5
+notebook>=7.2,<8
+ipykernel>=6.29,<7
+nbconvert>=7.16,<8

@@ -1,0 +1,14 @@
+# Python virtual environment (created by the install script)
+.venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local data / outputs produced by the notebook pipeline
+*.jsonl
+*.parquet
+data/
