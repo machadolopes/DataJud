@@ -1,0 +1,5 @@
+etapa,n,n_remanescente,pct_do_inicial
+n inicial,6300,6300,100.0
+excluídos: sequência de movimentos ausente ou vazia,0,6300,100.0
+excluídos: n movimentos < limiar mínimo,1053,5247,83.28571428571429
+n final (amostra do índice),5247,5247,83.28571428571429

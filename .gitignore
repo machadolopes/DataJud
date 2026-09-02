@@ -1,0 +1,17 @@
+# Ambientes e caches
+.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+*.pyc
+.python-version
+
+# Dados brutos e intermediários (não versionar)
+# O .jsonl do DataJud e os parquet gerados pelos notebooks.
+data/*.jsonl
+data/processado/*
+!data/processado/.gitkeep
+
+# Artefactos locais do sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,9 @@
+especificação,n_comum,rho_spearman_ranking,p (APA)
+"Principal (limiar EDA, intra-processo, geométrica)",5247,1.0,p < .001
+Limiar mínimo = 3,5247,1.0,p < .001
+Limiar mínimo = 5,5247,1.0,p < .001
+Limiar mínimo = 8,4831,0.9958339458109303,p < .001
+Limiar mínimo = 12,2724,0.8941879416818006,p < .001
+Sem normalização intra-processo (min-max bruto),5247,0.4843744992679115,p < .001
+Média aritmética,5247,0.9934029238656056,p < .001
+MPI,5247,0.9801479841495002,p < .001

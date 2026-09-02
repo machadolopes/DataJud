@@ -1,0 +1,5 @@
+modelo,R²,ΔR² vs. o seu base
+Duração ~ coorte + classe + n (sem ICP),0.9897833540223586,
+Duração ~ coorte + classe + n + ICP,0.9897852218308362,1.8678084775514137e-06
+"Duração residual ~ classe + n (within, sem ICP)",0.03626890246178249,
+Duração residual ~ classe + n + ICP residual (within),0.03685351034226958,0.0005846078804870869
