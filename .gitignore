@@ -1,0 +1,9 @@
+.venv/
+data/
+__pycache__/
+.ipynb_checkpoints/
+outputs/*.parquet
+outputs/holdout_para_escolher.csv
+outputs/holdout_processo_ids.txt
+*.jsonl
+.DS_Store
