@@ -172,12 +172,18 @@ def main() -> int:
     buffer: list[dict] = []
     lidos = 0
     gravados = 0
+    vistos: set[str] = set()
     print(f"A ler {ZENODO_JSONL}", flush=True)
     for reg in iter_jsonl(ZENODO_JSONL):
         lidos += 1
         row = extract_row(reg)
-        if row is not None:
-            buffer.append(row)
+        if row is None:
+            continue
+        pid = row.get("processo_id")
+        if not pid or pid in vistos:
+            continue
+        vistos.add(pid)
+        buffer.append(row)
         if len(buffer) >= CHUNK_ROWS:
             writer = flush(buffer, writer)
             gravados += len(buffer)
