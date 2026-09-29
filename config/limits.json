@@ -1,0 +1,16 @@
+{
+  "quoteValidityHours": 24,
+  "pixExpirationMinutes": 30,
+  "orderAccessTokenBytes": 32,
+  "downloadUrlMinutes": 15,
+  "reportEmailDownloadDays": 7,
+  "wordsPerPage": 350,
+  "minChapterWords": 300,
+  "fallbackBlockWords": 3000,
+  "maxInvalidCharRatio": 0.05,
+  "jobStaleMinutes": 60,
+  "jobHeartbeatSeconds": 30,
+  "jobBackoffMinutes": [1, 5, 20],
+  "reconcilePendingMinutes": 5,
+  "rateLimitPublicPerMinute": 20
+}

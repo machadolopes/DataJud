@@ -1,0 +1,9 @@
+{
+  "currency": "BRL",
+  "tiers": [
+    { "id": "curto", "label": "Até 40 mil palavras", "maxWords": 40000, "priceCents": 0 },
+    { "id": "medio", "label": "Até 90 mil palavras", "maxWords": 90000, "priceCents": 0 },
+    { "id": "longo", "label": "Até 150 mil palavras", "maxWords": 150000, "priceCents": 0 },
+    { "id": "extenso", "label": "Até 200 mil palavras", "maxWords": 200000, "priceCents": 0 }
+  ]
+}

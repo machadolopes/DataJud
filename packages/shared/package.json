@@ -1,0 +1,6 @@
+{
+  "name": "@parecer/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "JSON Schemas shared by the Next.js app and the Python worker"
+}

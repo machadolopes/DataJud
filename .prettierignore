@@ -1,0 +1,12 @@
+node_modules
+.next
+dist
+coverage
+.data
+.data/**
+pnpm-lock.yaml
+uv.lock
+DATAJUD_API_v_final.ipynb
+apps/web/prisma/migrations
+*.sql
+apps/web/.next

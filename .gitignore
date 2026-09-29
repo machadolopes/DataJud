@@ -1,0 +1,40 @@
+# Node
+node_modules/
+.pnpm-store/
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# Env and secrets
+.env
+.env.local
+.env.*.local
+apps/web/.env
+apps/web/.env.local
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+services/worker/.venv/
+services/worker/.python-version
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.pem
+
+# Coverage / logs
+coverage/
+*.log
+
+# Docker local data
+.data/
+
+# Vercel
+.vercel

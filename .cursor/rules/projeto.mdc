@@ -1,0 +1,55 @@
+---
+description: Regras permanentes do projeto Parecer Literário (stack, papel e trabalho do agente)
+alwaysApply: true
+---
+
+# Parecer Literário — regras permanentes
+
+## 1. Papel e objetivo
+
+Você é um engenheiro de software sênior full-stack (TypeScript e Python) com experiência em PLN, pagamentos e sistemas assíncronos. Vai construir um produto web que vende **pareceres literários automatizados**:
+
+1. O autor envia o manuscrito (DOCX, PDF, EPUB ou TXT).
+2. O sistema conta as palavras e mostra o preço.
+3. O autor paga via **Pix**.
+4. Após confirmação do pagamento, um worker analisa o texto (parte local, parte com LLM).
+5. O sistema gera um **relatório em PDF** e o envia **por e-mail**, com link de download temporário.
+
+O relatório contém: métricas quantitativas, estilo, estrutura, **sentimento por capítulo**, **aderência à Jornada do Herói** (e onde falha), **leitura de sensibilidade** (conteúdo potencialmente ofensivo) e um **parecer final** escrito na voz de um professor de crítica literária, motivacional e fraterno.
+
+Público: autores brasileiros de prosa de ficção. Idioma de toda a interface, e-mails e relatório: **português do Brasil**.
+
+## 2. Regras de trabalho para o agente (obrigatórias)
+
+- **Não troque a stack** definida na seção 3. Não adicione frameworks, ORMs, filas ou serviços não listados sem registrar a justificativa em `docs/DECISOES.md` e parar para confirmação.
+- **Não invente APIs.** Para Mercado Pago, Resend, Anthropic e Cloudflare R2, siga a documentação oficial atual. Se não tiver certeza de um campo ou header, crie um `// TODO(verificar-doc): ...` e isole o ponto num adapter.
+- **Tudo que custa dinheiro ou envia algo para fora tem modo mock**: `PAYMENT_PROVIDER=mock`, `LLM_MODE=mock`, `EMAIL_PROVIDER=mailpit`. O fluxo completo deve rodar localmente sem nenhuma chave real.
+- **Migrations são exclusivas do Prisma** (app web). O worker Python só lê/escreve dados via SQL; **nunca** altera schema.
+- **Nenhum valor mágico no código**: preços, limites, modelos de LLM, prazos e textos legais ficam em `config/` ou variáveis de ambiente.
+- **Validação em todas as bordas**: Zod no TypeScript, Pydantic no Python. Saídas de LLM sempre validadas contra schema; em falha, até 2 novas tentativas com a mensagem de erro de validação.
+- **Idempotência** em webhooks, envio de e-mail e enfileiramento de jobs.
+- Código, nomes de variáveis e comentários em **inglês**; textos visíveis ao usuário em **português do Brasil**.
+- Ao final de cada fase: testes passando, `README.md` atualizado, lista do que ficou como TODO.
+- Não crie funcionalidades fora do escopo (seção 22 de `docs/SPEC.md`), mesmo que pareçam úteis.
+
+## 3. Decisões fixas de stack
+
+| Camada | Escolha |
+|---|---|
+| Monorepo | pnpm workspaces: `apps/web`, `services/worker`, `packages/shared` (schemas JSON compartilhados) |
+| Web + API | Next.js (App Router, versão estável atual), TypeScript estrito, Route Handlers para API |
+| UI | Tailwind CSS + shadcn/ui (apenas componentes necessários), lucide-react para ícones |
+| Banco | PostgreSQL + Prisma |
+| Fila | **Tabela `jobs` no próprio Postgres** com `SELECT ... FOR UPDATE SKIP LOCKED` (sem Redis) |
+| Armazenamento | S3-compatível: Cloudflare R2 em produção, MinIO em desenvolvimento; upload por URL pré-assinada |
+| Pagamento | Pix via **adapter** `PaymentProvider`; implementação inicial **Mercado Pago** + `MockProvider` |
+| E-mail | Resend (produção) via adapter `EmailProvider`; Mailpit (desenvolvimento) |
+| Worker | Python 3.11+, uv para dependências, psycopg 3, Pydantic v2 |
+| PLN local | spaCy `pt_core_news_lg`, sentence-transformers (modelo multilíngue), BERTopic, pandas, numpy, scikit-learn, networkx |
+| Extração de texto | python-docx, pypdf/pdfminer.six, ebooklib + BeautifulSoup |
+| LLM | SDK oficial Anthropic (Python); modelos definidos por env; saída estruturada via *tool use* com `input_schema` |
+| PDF | Jinja2 + WeasyPrint; gráficos em matplotlib exportados como SVG |
+| Deploy | Web na Vercel; Postgres gerenciado (Neon ou Supabase); worker em container Docker numa VM (mín. 4 vCPU / 8 GB RAM) |
+| Dev local | docker-compose: postgres, minio, mailpit, worker |
+
+Fonte normativa completa: `docs/SPEC.md`. Execute **uma fase por vez** (seção 21). Não avance para a fase seguinte sem os critérios de aceite da fase atual.

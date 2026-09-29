@@ -1,0 +1,119 @@
+{
+  "categories": [
+    {
+      "id": "racismo",
+      "name": "Racismo e injúria racial",
+      "definition": "Estereótipos, slurs ou violência racista, inclusive injúria racial."
+    },
+    {
+      "id": "xenofobia",
+      "name": "Xenofobia e preconceito regional",
+      "definition": "Preconceito contra estrangeiros ou regiões do Brasil, inclusive estereótipos sobre nordestinos e nortistas."
+    },
+    {
+      "id": "indigenas",
+      "name": "Preconceito contra povos indígenas",
+      "definition": "Estereótipos, apagamento ou violência contra povos indígenas."
+    },
+    {
+      "id": "odio_generico",
+      "name": "Discurso de ódio genérico",
+      "definition": "Incitação ao ódio ou à violência contra um grupo, sem categoria mais específica."
+    },
+    {
+      "id": "sexismo",
+      "name": "Sexismo e machismo",
+      "definition": "Desigualdade de gênero, objetificação ou desvalorização de mulheres."
+    },
+    {
+      "id": "misoginia",
+      "name": "Misoginia",
+      "definition": "Ódio, desprezo ou violência dirigida especificamente a mulheres."
+    },
+    {
+      "id": "lgbtfobia",
+      "name": "Homofobia e LGBTfobia",
+      "definition": "Preconceito ou violência contra pessoas LGBTI+."
+    },
+    {
+      "id": "transfobia",
+      "name": "Transfobia",
+      "definition": "Preconceito, misgendering hostil ou violência contra pessoas trans."
+    },
+    {
+      "id": "capacitismo",
+      "name": "Capacitismo",
+      "definition": "Preconceito contra pessoas com deficiência."
+    },
+    {
+      "id": "gordofobia",
+      "name": "Gordofobia",
+      "definition": "Estigma ou violência contra corpos gordos."
+    },
+    {
+      "id": "etarismo",
+      "name": "Etarismo",
+      "definition": "Preconceito por idade, contra jovens ou pessoas idosas."
+    },
+    {
+      "id": "classe",
+      "name": "Preconceito de classe",
+      "definition": "Estigma contra pobreza, moradia ou origem de classe."
+    },
+    {
+      "id": "intolerancia_religiosa",
+      "name": "Intolerância religiosa",
+      "definition": "Ataque ou ridicularização de religiões e práticas de fé, inclusive religiões de matriz africana."
+    },
+    {
+      "id": "antissemitismo",
+      "name": "Antissemitismo",
+      "definition": "Preconceito, teorias conspiratórias ou violência contra pessoas judias."
+    },
+    {
+      "id": "islamofobia",
+      "name": "Islamofobia",
+      "definition": "Preconceito ou violência contra pessoas muçulmanas."
+    },
+    {
+      "id": "totalitarismo",
+      "name": "Nazismo, fascismo e apologia a regimes totalitários ou genocídios",
+      "definition": "Apologia, estética de propaganda ou endosso a regimes totalitários ou genocídios."
+    },
+    {
+      "id": "apologia_violencia",
+      "name": "Apologia à violência",
+      "definition": "Incitação ou glorificação da violência fora de um retrato crítico."
+    },
+    {
+      "id": "violencia_sexual",
+      "name": "Violência sexual",
+      "definition": "Estupro, abuso ou romantização de violência sexual."
+    },
+    {
+      "id": "conteudo_sexual_menores",
+      "name": "Conteúdo sexual envolvendo menores",
+      "definition": "Apenas sinalizar existência e local, sem citar ou descrever o trecho."
+    },
+    {
+      "id": "suicidio_autolesao",
+      "name": "Suicídio e autolesão",
+      "definition": "Distinguir retrato de apologia, romantização ou descrição de métodos."
+    },
+    {
+      "id": "drogas",
+      "name": "Apologia ao uso de drogas",
+      "definition": "Endosso ou glamourização do uso de drogas, distinto de retrato crítico."
+    },
+    {
+      "id": "crueldade_animal",
+      "name": "Crueldade contra animais",
+      "definition": "Violência gratuita ou endossada contra animais."
+    },
+    {
+      "id": "outros",
+      "name": "Outros conteúdos potencialmente ofensivos",
+      "definition": "Conteúdo que pode ofender leitores e não se encaixa nas categorias acima."
+    }
+  ]
+}

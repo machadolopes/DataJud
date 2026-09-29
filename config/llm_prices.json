@@ -1,0 +1,23 @@
+{
+  "currency": "USD",
+  "models": {
+    "claude-haiku-4-5-20251001": {
+      "inputPerMillionCents": 100,
+      "outputPerMillionCents": 500,
+      "cacheWritePerMillionCents": 125,
+      "cacheReadPerMillionCents": 10
+    },
+    "claude-sonnet-5-5": {
+      "inputPerMillionCents": 300,
+      "outputPerMillionCents": 1500,
+      "cacheWritePerMillionCents": 375,
+      "cacheReadPerMillionCents": 30
+    },
+    "claude-opus-5-5": {
+      "inputPerMillionCents": 1500,
+      "outputPerMillionCents": 7500,
+      "cacheWritePerMillionCents": 1875,
+      "cacheReadPerMillionCents": 150
+    }
+  }
+}
