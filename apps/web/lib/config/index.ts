@@ -43,8 +43,28 @@ const sellerSchema = z.object({
   }),
 });
 
+const limitsSchema = z.object({
+  quoteValidityHours: z.number().positive(),
+  pixExpirationMinutes: z.number().int().positive(),
+  wordsPerPage: z.number().int().positive(),
+  downloadUrlMinutes: z.number().int().positive(),
+});
+
+const retentionSchema = z.object({
+  manuscriptDaysAfterDelivery: z.number().int().positive(),
+  workArtifactsDaysAfterDelivery: z.number().int().positive(),
+  reportDaysAfterDelivery: z.number().int().positive(),
+  consentProofYearsAfterRevocation: z.number().int().positive(),
+});
+
 export type PricingConfig = z.infer<typeof pricingSchema>;
 export type ConsentsConfig = z.infer<typeof consentsSchema>;
+export type SellerConfig = z.infer<typeof sellerSchema>["seller"];
+export type LimitsConfig = z.infer<typeof limitsSchema>;
+export type RetentionConfig = z.infer<typeof retentionSchema>;
+
+/** Spec default when MAX_UPLOAD_MB is unset. Matches .env.example. */
+export const DEFAULT_MAX_UPLOAD_MB = 20;
 
 export function resolveConfigDir(cwd = process.cwd()): string {
   const candidates = [path.resolve(cwd, "config"), path.resolve(cwd, "../../config")];
@@ -70,6 +90,26 @@ export function loadConsents(configDir = resolveConfigDir()): ConsentsConfig {
 
 export function loadSeller(configDir = resolveConfigDir()) {
   return sellerSchema.parse(readJson(path.join(configDir, "seller.json")));
+}
+
+export function loadLimits(configDir = resolveConfigDir()): LimitsConfig {
+  return limitsSchema.parse(readJson(path.join(configDir, "limits.json")));
+}
+
+export function loadRetention(configDir = resolveConfigDir()): RetentionConfig {
+  return retentionSchema.parse(readJson(path.join(configDir, "retention.json")));
+}
+
+export function maxUploadMb(env: NodeJS.ProcessEnv = process.env): number {
+  const raw = env.MAX_UPLOAD_MB;
+  if (raw === undefined || raw.trim() === "") {
+    return DEFAULT_MAX_UPLOAD_MB;
+  }
+  const value = Number(raw);
+  if (!Number.isInteger(value) || value <= 0) {
+    throw new Error("MAX_UPLOAD_MB must be a positive integer.");
+  }
+  return value;
 }
 
 export function assertProductionConfig(
