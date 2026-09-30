@@ -6,12 +6,12 @@ O parecer é gerado com auxílio de inteligência artificial. Idioma da interfac
 
 Especificação normativa: [`docs/SPEC.md`](docs/SPEC.md). Decisões de engenharia: [`docs/DECISOES.md`](docs/DECISOES.md).
 
-> Fase atual: **F0 — Fundação**. Site, upload, pagamento e pipeline de análise ainda não estão implementados.
+> Fase atual: **F1 — Site e design**. A landing, os rascunhos de termos e privacidade e o wizard em `/analisar` estão no ar com dados de demonstração. Upload, Pix real, página de pedido ligada ao banco e o PDF de exemplo entram nas fases seguintes.
 
 ## Stack (fixa)
 
 - Monorepo pnpm: `apps/web`, `services/worker`, `packages/shared`
-- Next.js 16 (App Router) + TypeScript + Tailwind CSS
+- Next.js 16 (App Router) + TypeScript + Tailwind CSS + shadcn/ui
 - PostgreSQL + Prisma (único dono de migrations)
 - Fila na tabela `jobs` (`SELECT … FOR UPDATE SKIP LOCKED`)
 - Storage S3-compatível (MinIO no desenvolvimento, Cloudflare R2 em produção)
@@ -58,16 +58,26 @@ Em produção o app **recusa iniciar** se algum `priceCents` em `config/pricing.
 
 Remetente de domínio próprio com SPF, DKIM e DMARC. Documentar os registros no deploy (F7). No desenvolvimento, tudo cai no Mailpit.
 
-## TODO da F0
+## Site (F1)
+
+Páginas: `/`, `/analisar`, `/termos`, `/privacidade`, `/exemplo`, `/pedido/demo?t=demonstracao`.
+
+O wizard não chama API. O arquivo fica no navegador, o orçamento usa números fixos de demonstração e o preço sai de `config/pricing.json`. Um arquivo cujo nome contém `sem-capitulos` mostra o aviso de capítulos não detectados. No passo do Pix, “Simular confirmação do Pix” abre a tela de sucesso.
+
+## TODO
 
 - [ ] Preencher `config/pricing.json` com preços reais antes de qualquer deploy.
 - [ ] Preencher `legalName`, `cnpj` e `contactEmail` em `config/consents.json` e `config/seller.json`.
+- [ ] Revisão jurídica dos rascunhos em `/termos` e `/privacidade`.
+- [ ] Trocar o wizard de demonstração por upload, pedido e orçamento reais (F2).
+- [ ] Pix real, webhook e página de pedido com token (F3 e F2).
+- [ ] PDF de exemplo em `/exemplo` a partir de obra em domínio público (F6).
+- [ ] Página de preferências e descadastro (F7).
 - [ ] Confirmar identificadores dos modelos Anthropic na documentação oficial (F5).
 - [ ] Confirmar preços em `config/llm_prices.json` (valores de exemplo).
 - [ ] Dependências de PLN, extração, LLM e PDF no worker (fases 4–6).
 - [ ] `pnpm seed` com pedidos em vários status (F2+).
 - [ ] Adapters de pagamento, e-mail, storage e admin (fases 2–7).
-- [ ] Textos de termos e privacidade para revisão jurídica (F1).
 - [ ] Notebook `DATAJUD_API_v_final.ipynb` nesta raiz é legado do repositório; fora do produto.
 
 ## Fora de escopo (v1)
