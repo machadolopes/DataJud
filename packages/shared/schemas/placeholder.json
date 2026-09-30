@@ -1,8 +1,0 @@
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://parecer.local/schemas/placeholder.json",
-  "title": "Placeholder",
-  "description": "LLM output schemas are added in F5. This file keeps the shared schemas folder versioned from F0.",
-  "type": "object",
-  "additionalProperties": false
-}

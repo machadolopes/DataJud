@@ -1,1 +1,0 @@
-"""Parecer Literário worker package."""

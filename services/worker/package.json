@@ -1,7 +1,0 @@
-{
-  "name": "worker",
-  "private": true,
-  "scripts": {
-    "test": "uv run pytest"
-  }
-}
